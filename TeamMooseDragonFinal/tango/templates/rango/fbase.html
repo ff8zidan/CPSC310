@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}Emergency Rooms{% endblock %}</title>
+    <!-- <meta http-equiv="refresh" content="2">  -->
+    <link rel="stylesheet" href="/media/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <style type="text/css">
+        * {
+            color: #555;
+            font-size: 14px;
+            font-family: Montserrat;
+        }
+        body {
+         background: #000;
+         background-size: cover;
+        font-family: Montserrat;
+        }
+
+        #menu a {
+            padding-right: 3px;
+            padding-left: 3px;
+     color:#FFF;
+     font-size:1em;
+     padding:25px 20px;
+     display: block;
+     text-align:center;
+     color:#B9B9B9;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;  
+     position:relative;
+        }
+
+        a:hover {
+            color:#e8603c;
+        }
+
+        #container { margin: auto; width: 800px; border: 0px solid; }
+
+        p { font-size: 1.1em; }
+        h3 { margin-right: 30px; display: inline; }
+    </style>
+
+</head>
+
+<body>
+    <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
+    <div id="container">
+        <div id="menu">
+            {% block nav-global %}
+
+                <!-- MENU -->
+                <h3><a href="/rango/list">Emergency Rooms</a></h3>
+
+                {% if user.is_authenticated %}
+                    <a href="/rango/edit">Edit profile</a> {% endif %}
+
+                {% if not user.is_authenticated %}<a href="/rango/login">Login</a> | <a
+                    href="/rango/register/">Register</a>{% endif %}
+
+                {% if user.is_authenticated %}<a href="/rango/logout">Logout</a>
+                    {% endif %}
+
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+</body>
+</html>
+

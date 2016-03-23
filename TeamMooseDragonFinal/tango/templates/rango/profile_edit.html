@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<meta charset="UTF-8">
+
+<title>Edit Profile</title>
+<style>
+body {
+    background: #000;
+    background-size: cover;
+    font-family: Montserrat;
+}
+
+.logo {
+    width: 213px;
+    height: 36px;
+    background: #000;
+    margin: 30px auto;
+}
+
+.login-block {
+    width: 500px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 5px 0 5px;
+    outline: none;
+}
+
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #ff7b81;
+    text-decoration: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="logo"></div>
+<div class="login-block">
+    <h1>{{ user.username }}'s Profile</h1>
+<form action="." method="post">
+    {% csrf_token %}    
+    User:
+    <input type="text" name="user" value="{{ user.username}}" /><br />
+    First Name:
+    <input type="text" name="first" value="{{ user.first_name}}" /><br />
+
+    Last Name:
+    <input type="text" name="last" value="{{ user.last_name}}" /><br />
+    Website:
+    <input type="text" name="website" value="{{ user.userprofile.website}}" /><br />
+
+    Email:
+    <input type="text" name="email" value="{{ user.email}}" /><br />
+    Public Email:
+    <input type="checkbox" name="show_email" checked /></input><br/>
+    
+    <input type="submit" value="Save Changes" name="save" />
+    <input type="reset" value="Reset" name="reset" />
+    <br/>
+</form>
+
+    <button><a href="javascript:history.go(-1)" 
+           data-role="button" style="text-decoration:none"><font color="white">Cancel</font></a></button>
+</div>
+</body>
+
+</html>
+
+
+		
+
+
